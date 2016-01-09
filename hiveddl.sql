@@ -1,6 +1,5 @@
 ADD JAR json-serde-1.1.6-SNAPSHOT-jar-with-dependencies.jar;
 
-
 --create the tweets_raw table containing the records as received from Twitter
 
 CREATE EXTERNAL TABLE tweets_raw (
@@ -11,13 +10,13 @@ CREATE EXTERNAL TABLE tweets_raw (
    retweet_count INT,
    retweeted_status STRUCT<
       text:STRING,
-      user:STRUCT<screen_name:STRING,name:STRING>>,
+      usr:STRUCT<screen_name:STRING,name:STRING>>,
    entities STRUCT<
       urls:ARRAY<STRUCT<expanded_url:STRING>>,
       user_mentions:ARRAY<STRUCT<screen_name:STRING,name:STRING>>,
       hashtags:ARRAY<STRUCT<text:STRING>>>,
    text STRING,
-   user STRUCT<
+   usr STRUCT<
       screen_name:STRING,
       name:STRING,
       friends_count:INT,
@@ -64,7 +63,7 @@ SELECT
   id,
   cast ( from_unixtime( unix_timestamp(concat( '2013 ', substring(created_at,5,15)), 'yyyy MMM dd hh:mm:ss')) as timestamp) ts,
   text,
-  user.time_zone 
+  usr.time_zone 
 FROM tweets_raw
 ;
 
