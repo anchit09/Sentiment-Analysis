@@ -1,4 +1,6 @@
-ADD JAR json-serde-1.1.6-SNAPSHOT-jar-with-dependencies.jar;
+--ADD JAR json-serde-1.1.6-SNAPSHOT-jar-with-dependencies.jar;
+
+ADD JAR json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar;
 
 --create the tweets_raw table containing the records as received from Twitter
 
